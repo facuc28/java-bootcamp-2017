@@ -13,18 +13,13 @@ public class Main {
 
     public static void main(String args[])
     {
-        DataBase DB = new DataBase();
 
-        ResultSet resultSet = DB.DBRequest("SELECT * FROM extended WHERE id_weather=1");
-        try {
-            while (resultSet.next())
-            {
-                System.out.println(resultSet.getString("date"));
-            }
-        }catch (Exception E)
-        {
-            E.printStackTrace();
-        }
+        DataBase DB = new DataBase();
+        if (DB.connect())
+            System.out.println("\n"+"Connection to the database successful.");
+        else
+            System.out.println("Error while connecting to database.");
+
 
         //Objects
         Country C1 = new Country();
