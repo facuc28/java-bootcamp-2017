@@ -1,5 +1,6 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.CityBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
 import java.sql.ResultSet;
@@ -22,6 +23,12 @@ public class City {
         this.state_id = state_id;
     }
 
+    public City(CityBuilder builder)
+    {
+        this.name = builder.name;
+        this.weather_id = builder.weather_id;
+        this.state_id = builder.state_id;
+    }
     public int getId_city() {
         return id_city;
     }

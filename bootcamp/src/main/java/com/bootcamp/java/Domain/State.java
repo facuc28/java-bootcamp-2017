@@ -1,5 +1,6 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.StateBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
 import java.sql.ResultSet;
@@ -24,6 +25,15 @@ public class State {
         this.area = area;
         this.capital = capital;
         this.abbrev = abbrev;
+    }
+
+    public State(StateBuilder builder)
+    {
+        this.country_id = builder.country_id;
+        this.name = builder.name;
+        this.area = builder.area;
+        this.capital =builder.capital;
+        this.abbrev = builder.abbrev;
     }
 
     public int getId_state() {

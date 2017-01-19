@@ -170,7 +170,7 @@ public class DBPersistence {
         //Auxiliaries
         DB.connect();
         Atmosphere A= null;
-        String sql="SELECT * FROM bootcamp2.atmosphere WHERE id_atmopshere="+id_atmosphere;
+        String sql="SELECT * FROM bootcamp2.atmosphere WHERE id_atmosphere="+id_atmosphere;
         ResultSet res =  DB.DBRequest(sql);
         try {
             while(res.next())

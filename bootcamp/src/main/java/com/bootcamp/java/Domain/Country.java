@@ -1,5 +1,6 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.CountryBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
 import java.sql.ResultSet;
@@ -14,6 +15,13 @@ public class Country {
     private String name;
 
     public Country(){}
+    public Country(CountryBuilder builder)
+    {
+        this.country_code2 = builder.country_code2;
+        this.country_code3 = builder.country_code3;
+        this.name = builder.name;
+
+    }
     public Country(String country_code2, String country_code3, String name) {
         id_country = getLastID()+1;
         this.country_code2 = country_code2;

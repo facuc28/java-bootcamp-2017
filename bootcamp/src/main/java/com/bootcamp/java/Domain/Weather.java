@@ -1,6 +1,8 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Configuration.DataBase;
+import com.bootcamp.java.Persistence.DBPersistence;
+import org.omg.CORBA.PERSIST_STORE;
 
 import java.sql.ResultSet;
 
@@ -102,12 +104,13 @@ public class Weather {
     }
     @Override
     public String toString() {
-        return "Weather{" +
-                "id_weather=" + id_weather +
-                ", wind_id=" + wind_id +
-                ", atmosphere_id=" + atmosphere_id +
-                ", actual_weather_id=" + actual_weather_id +
-                ", extended_weather_id=" + extended_weather_id +
+            //auxiliaries
+        DBPersistence persistence = new DBPersistence();
+        return "Weather information: {" + description +
+                "\n Wind Information= " + persistence.getWind(wind_id).toString() +
+                "\n Atmosphere Information: " + persistence.getAtmosphere(atmosphere_id).toString() +
+                "\n Actual Weather: " + persistence.getActualWeather(actual_weather_id).toString() +
+                "\n Extended Weather: " + persistence.getExtendedWeather(extended_weather_id).toString() +
                 ", description='" + description + '\'' +
                 '}';
     }
