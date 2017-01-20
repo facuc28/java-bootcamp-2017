@@ -1,5 +1,6 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.WeatherBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 import com.bootcamp.java.Persistence.DBPersistence;
 import org.omg.CORBA.PERSIST_STORE;
@@ -28,6 +29,14 @@ public class Weather {
         this.description = description;
     }
 
+    public Weather(WeatherBuilder builder)
+    {
+        this.wind_id = builder.wind_id;
+        this.atmosphere_id = builder.atmosphere_id;
+        this.actual_weather_id = builder.actual_weather_id;
+        this.extended_weather_id = builder.extended_weather_id;
+        this.description = builder.description;
+    }
     public int getId_weather() {
         return id_weather;
     }

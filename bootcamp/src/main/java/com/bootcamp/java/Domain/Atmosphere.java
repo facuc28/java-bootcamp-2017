@@ -1,5 +1,7 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.Actual_WeatherBuilder;
+import com.bootcamp.java.Builder.AtmosphereBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
 import java.sql.ResultSet;
@@ -24,6 +26,15 @@ public class Atmosphere {
         this.rising = rising;
         this.pressure = pressure;
     }
+    public Atmosphere(AtmosphereBuilder builder)
+    {
+        this.humidity = builder.humidity;
+        this.visibility = builder.visibility;
+        this.rising = builder.rising;
+        this.pressure = builder.pressure;
+    }
+
+    public Atmosphere(Actual_WeatherBuilder builder) {}
 
     public int getId_atmosphere() {
         return id_atmosphere;

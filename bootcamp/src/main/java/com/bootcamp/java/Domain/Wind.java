@@ -1,8 +1,8 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.WindBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
-import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 
 /**
@@ -21,6 +21,11 @@ public class Wind {
         this.direction = direction;
     }
 
+    public Wind(WindBuilder builder)
+    {
+        this.speed = builder.speed;
+        this.direction = builder.direction;
+    }
     public int getId_wind() {
         return id_wind;
     }

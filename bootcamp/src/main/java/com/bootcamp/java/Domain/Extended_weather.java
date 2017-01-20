@@ -1,6 +1,8 @@
 package com.bootcamp.java.Domain;
 
 import java.sql.ResultSet;
+
+import com.bootcamp.java.Builder.Extended_WeatherBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
 
@@ -27,7 +29,14 @@ public class Extended_weather {
         this.minimum = minimum;
         this.date = date;
     }
-
+    public Extended_weather(Extended_WeatherBuilder builder)
+    {
+        this.description = builder.description;
+        this.weekday = builder.weekday;
+        this.maximum = builder.maximum;
+        this.minimum = builder.minimum;
+        this.date = builder.date;
+    }
     public int getId_extendedWeather() {
         return id_extendedWeather;
     }

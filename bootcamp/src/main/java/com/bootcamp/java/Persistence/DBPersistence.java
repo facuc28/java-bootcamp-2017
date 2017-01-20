@@ -190,7 +190,7 @@ public class DBPersistence {
     public Actual_weather getActualWeather(int id_actualWeather)
     {
         //Auxiliares
-        Actual_weather AW = null;
+        Actual_weather AW;
         String sql="SELECT * FROM bootcamp2.actual_weather WHERE id_actualWeather="+id_actualWeather;
         ResultSet res =  DB.DBRequest(sql);
         try {

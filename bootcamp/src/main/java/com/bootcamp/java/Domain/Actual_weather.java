@@ -1,7 +1,9 @@
 package com.bootcamp.java.Domain;
 
+import com.bootcamp.java.Builder.Actual_WeatherBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 
+import java.sql.ParameterMetaData;
 import java.sql.ResultSet;
 
 /**
@@ -20,6 +22,12 @@ public class Actual_weather {
         this.temperature = temperature;
         this.description = description;
         this.date = date;
+    }
+    public Actual_weather(Actual_WeatherBuilder builder)
+    {
+        this.temperature = builder.temperature;
+        this.date = builder.date;
+        this.description = builder.description;
     }
 
     public int getId_actualWeather() {
