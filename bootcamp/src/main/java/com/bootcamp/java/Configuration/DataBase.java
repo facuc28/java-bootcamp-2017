@@ -1,32 +1,34 @@
 package com.bootcamp.java.Configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 /**
  * Created by facun on 11/01/2017.
  */
+@Configuration
 public class DataBase {
-
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     private static DataBase dataBase;
+    private String urlDB="jdbc:mysql://localhost:3306/bootcamp2?useSSL=false";
+    private String userDB="facuc28";
+    private String passDB="cmdopentelnet123";
 
-
-    private DataBase(){}
-
-    public static DataBase getInstance(){
-
-        if (dataBase == null)
-            dataBase = new DataBase();
-
-        return dataBase;
+    public DataBase(){
     }
 
+    //jdbc:mysql://localhost:3306/bootcamp2?useSSL=false
     public boolean connect()
     {
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bootcamp2?useSSL=false", "facuc28", "cmdopentelnet123");
+            connection = DriverManager.getConnection(urlDB, userDB, passDB);
             statement = connection.createStatement();
 
         }catch (Exception E)

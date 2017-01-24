@@ -4,7 +4,8 @@ import java.sql.ResultSet;
 
 import com.bootcamp.java.Builder.Extended_WeatherBuilder;
 import com.bootcamp.java.Configuration.DataBase;
-
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 /**
@@ -88,7 +89,8 @@ public class Extended_weather {
 
     private int getLastID()
     {
-        DataBase DB = DataBase.getInstance();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
         String sql = "SELECT id_extended_weather FROM bootcamp2.extended_weather";
         ResultSet result = DB.DBRequest(sql);
         boolean flag;

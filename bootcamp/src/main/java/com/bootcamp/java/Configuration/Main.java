@@ -1,10 +1,7 @@
 package com.bootcamp.java.Configuration;
 
-import com.bootcamp.java.Domain.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import com.bootcamp.java.Persistence.DBPersistence;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 /**
@@ -14,15 +11,15 @@ public class Main {
 
     public static void main(String args[])
     {
-
-        DataBase DB = DataBase.getInstance();
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/beans.xml");
+        DataBase DB = applicationContext.getBean("DataBase", DataBase.class);
+        
         if (DB.connect())
             System.out.println("\n"+"Connection to the database successful.");
         else
             System.out.println("Error while connecting to database.");
 
-
+        /*
         //DBPersistence persistence = new DBPersistence();
         //Country C = new Country("KO","KOR","Korea");
         //persistence.insertCountry(C);
@@ -246,6 +243,6 @@ public class Main {
         }
         }while (optionMenu==0);
 
-
+        */
     }
 }

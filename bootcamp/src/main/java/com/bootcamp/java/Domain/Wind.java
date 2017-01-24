@@ -2,6 +2,8 @@ package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.WindBuilder;
 import com.bootcamp.java.Configuration.DataBase;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.ResultSet;
 
@@ -51,7 +53,8 @@ public class Wind {
     }
     private int getLastID()
     {
-        DataBase DB = DataBase.getInstance();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
         String sql = "SELECT id_wind FROM bootcamp2.wind";
         ResultSet result = DB.DBRequest(sql);
         boolean flag;

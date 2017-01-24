@@ -3,7 +3,8 @@ package com.bootcamp.java.Domain;
 import com.bootcamp.java.Builder.WeatherBuilder;
 import com.bootcamp.java.Configuration.DataBase;
 import com.bootcamp.java.Persistence.DBPersistence;
-import org.omg.CORBA.PERSIST_STORE;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.ResultSet;
 
@@ -87,7 +88,8 @@ public class Weather {
 
     private int getLastID()
     {
-        DataBase DB = DataBase.getInstance();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
         String sql = "SELECT id_weather FROM bootcamp2.weather";
         ResultSet result = DB.DBRequest(sql);
         boolean flag;

@@ -2,6 +2,8 @@ package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.CountryBuilder;
 import com.bootcamp.java.Configuration.DataBase;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.ResultSet;
 
@@ -64,7 +66,8 @@ public class Country {
 
     private int getLastID()
     {
-        DataBase DB = DataBase.getInstance();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
         String sql = "SELECT id_country FROM bootcamp2.country";
         ResultSet result = DB.DBRequest(sql);
         boolean flag;

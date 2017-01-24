@@ -2,6 +2,8 @@ package com.bootcamp.java.Persistence;
 
 import com.bootcamp.java.Configuration.DataBase;
 import com.bootcamp.java.Domain.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.ResultSet;
 
@@ -13,7 +15,9 @@ public class DBPersistence {
     private DataBase DB;
 
     public DBPersistence() {
-        this.DB = DataBase.getInstance();
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        DB = applicationContext.getBean("dataBase", DataBase.class);
     }
 
     public boolean insertCountry(Country C)

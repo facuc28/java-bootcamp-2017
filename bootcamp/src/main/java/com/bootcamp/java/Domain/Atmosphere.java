@@ -3,6 +3,8 @@ package com.bootcamp.java.Domain;
 import com.bootcamp.java.Builder.Actual_WeatherBuilder;
 import com.bootcamp.java.Builder.AtmosphereBuilder;
 import com.bootcamp.java.Configuration.DataBase;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.ResultSet;
 
@@ -78,7 +80,8 @@ public class Atmosphere {
 
     private int getLastID()
     {
-        DataBase DB = DataBase.getInstance();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
         String sql = "SELECT id_atmosphere FROM bootcamp2.atmosphere";
         ResultSet result = DB.DBRequest(sql);
         boolean flag;
