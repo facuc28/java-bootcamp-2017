@@ -1,7 +1,15 @@
 package com.bootcamp.java.Configuration;
 
+import com.bootcamp.java.Builder.Extended_WeatherBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.bootcamp.java.Persistence.DBPersistence;
+import com.bootcamp.java.Domain.*;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 
 /**
@@ -11,15 +19,27 @@ public class Main {
 
     public static void main(String args[])
     {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/beans.xml");
-        DataBase DB = applicationContext.getBean("DataBase", DataBase.class);
-        
-        if (DB.connect())
-            System.out.println("\n"+"Connection to the database successful.");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Beans.xml");
+        DataBase dataBase =(DataBase)applicationContext.getBean("dataBase");
+
+        if (dataBase.connect())
+            System.out.println("\n"+"Connection to the database successful."+dataBase.getUrlDB());
         else
             System.out.println("Error while connecting to database.");
 
-        /*
+        /*String sql = "SELECT name FROM bootcamp2.country";
+        ResultSet resultSet =  DB.DBRequest(sql);
+
+        try {
+            while(resultSet.next())
+            {
+                System.out.println(resultSet.getString("name"));
+            }
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+        */
         //DBPersistence persistence = new DBPersistence();
         //Country C = new Country("KO","KOR","Korea");
         //persistence.insertCountry(C);
@@ -243,6 +263,6 @@ public class Main {
         }
         }while (optionMenu==0);
 
-        */
+
     }
 }
