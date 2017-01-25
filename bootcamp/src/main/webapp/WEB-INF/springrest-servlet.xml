@@ -11,6 +11,7 @@
 
 
 
+    <bean id="dataBase" class="com.bootcamp.java.Configuration.DataBase" autowire="byName" />
 
 
 </beans>

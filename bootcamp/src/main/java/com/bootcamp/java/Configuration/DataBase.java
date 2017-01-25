@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 
 
-@Repository
+
 public class DataBase {
     private Connection connection;
     private Statement statement;
