@@ -1,6 +1,6 @@
 package com.bootcamp.java.Configuration;
 
-import com.bootcamp.java.Builder.Extended_WeatherBuilder;
+import com.bootcamp.java.Persistence.CountryDAO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.bootcamp.java.Persistence.DBPersistence;
@@ -19,16 +19,20 @@ public class Main {
 
     public static void main(String args[])
     {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Beans.xml");
+        CountryDAO countryDAO = new CountryDAO();
+        System.out.println(countryDAO.getCountries());
+
+        /*
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Beans-servlet.xml");
         DataBase dataBase =(DataBase)applicationContext.getBean("dataBase");
 
         if (dataBase.connect())
-            System.out.println("\n"+"Connection to the database successful."+dataBase.getUrlDB());
+            System.out.println("\n"+"Connection to the database successful."+dataBase);
         else
             System.out.println("Error while connecting to database.");
 
-        /*String sql = "SELECT name FROM bootcamp2.country";
-        ResultSet resultSet =  DB.DBRequest(sql);
+        String sql = "SELECT name FROM bootcamp2.country";
+        ResultSet resultSet =  dataBase.DBRequest(sql);
 
         try {
             while(resultSet.next())
@@ -40,6 +44,7 @@ public class Main {
             E.printStackTrace();
         }
         */
+
         //DBPersistence persistence = new DBPersistence();
         //Country C = new Country("KO","KOR","Korea");
         //persistence.insertCountry(C);
@@ -53,7 +58,7 @@ public class Main {
         //
         //persistence.insertWind(W);
 
-
+        /*
 
         //Objects
         DBPersistence persistence = new DBPersistence();
@@ -163,7 +168,7 @@ public class Main {
             case 4:
             {
                 //Auxiliary variables
-                String country = "";
+                String country;
                 sc.nextLine();
                 System.out.print("Input country name to view: ");
                 country = sc.nextLine();
@@ -263,6 +268,6 @@ public class Main {
         }
         }while (optionMenu==0);
 
-
+        */
     }
 }

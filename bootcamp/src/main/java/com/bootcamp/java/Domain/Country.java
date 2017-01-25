@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 /**
  * Created by facun on 16/01/2017.
  */
-@Component
+
 public class Country {
     private  int id_country;
     private String country_code2;

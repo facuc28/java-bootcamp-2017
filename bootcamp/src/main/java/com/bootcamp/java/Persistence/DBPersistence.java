@@ -3,9 +3,13 @@ package com.bootcamp.java.Persistence;
 import com.bootcamp.java.Configuration.DataBase;
 import com.bootcamp.java.Domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by facun on 17/01/2017.
@@ -15,9 +19,11 @@ public class DBPersistence {
     @Autowired
     private DataBase dataBase;
 
-    public DBPersistence() {}
+    public DBPersistence() {
 
-    public void setDataSource(DataBase dataBase)
+    }
+
+    public void setDataBase(DataBase dataBase)
     {
         this.dataBase = dataBase;
     }
@@ -87,7 +93,7 @@ public class DBPersistence {
 
         Country C = null;
         String sql = "SELECT * FROM bootcamp2.country WHERE name='" + name + "'";
-        System.out.println(dataBase.getUserDB());
+        System.out.println(dataBase);
         dataBase.connect();
         ResultSet res =  dataBase.DBRequest(sql);
 
@@ -106,6 +112,31 @@ public class DBPersistence {
 
         return null;
     }
+    public List<Country> getCountries() {
+        //Auxiliaries
+
+        Country C = null;
+        String sql = "SELECT * FROM bootcamp2.country";
+        List<Country> countryList = new ArrayList<Country>();
+        dataBase.connect();
+        ResultSet res =  dataBase.DBRequest(sql);
+
+        try {
+            while(res.next())
+            {
+                C = new Country(res.getString("country_code2"), res.getString("country_code3"), res.getString("name"));
+                C.setId_country(res.getInt("id_country"));
+                countryList.add(C);
+            }
+
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+
+        return countryList;
+    }
+
     public State getState(String name)
     {
         //Auxiliaries
