@@ -18,11 +18,11 @@ public class CountryController {
     CountryDAO countryDAO;
 
     @RequestMapping(value = "/countries", method = RequestMethod.GET,headers="Accept=application/json")
-    public List<Country> getCountries()
+    public ResponseEntity<List<Country>> getCountries()
     {
         List<Country> listOfCountries = new ArrayList<Country>();
         listOfCountries= countryDAO.getCountries();
-        return listOfCountries;
+        return new ResponseEntity<List<Country>>(listOfCountries,HttpStatus.FOUND);
     }
     @RequestMapping(value = "/country/{name}", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<Country> getCountry(@PathVariable String name)
