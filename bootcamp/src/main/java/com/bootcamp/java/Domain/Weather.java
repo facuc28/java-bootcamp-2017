@@ -1,12 +1,6 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.WeatherBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import com.bootcamp.java.Persistence.DBPersistence;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.sql.ResultSet;
 
 /**
  * Created by facun on 16/01/2017.
@@ -21,8 +15,9 @@ public class Weather {
         private String description;
 
         public  Weather(){}
+
     public Weather(int wind_id, int atmosphere_id, int actual_weather_id, int extended_weather_id, String description) {
-        id_weather = getLastID()+1;
+
         this.wind_id = wind_id;
         this.atmosphere_id = atmosphere_id;
         this.actual_weather_id = actual_weather_id;
@@ -85,7 +80,7 @@ public class Weather {
     public void setDescription(String description) {
         this.description = description;
     }
-
+/*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -113,7 +108,9 @@ public class Weather {
         }
         return mayor;
     }
-    @Override
+    */
+
+    /*
     public String toString() {
             //auxiliaries
         DBPersistence persistence = new DBPersistence();
@@ -125,4 +122,5 @@ public class Weather {
                 ", description='" + description + '\'' +
                 '}';
     }
+    */
 }

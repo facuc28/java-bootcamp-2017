@@ -18,8 +18,8 @@ public class City {
     private int state_id;
 
     public City(){}
+
     public City(String name, int weather_id, int state_id) {
-        id_city = getLastID()+1;
         this.name = name;
         this.weather_id = weather_id;
         this.state_id = state_id;
@@ -62,7 +62,7 @@ public class City {
     public void setState_id(int state_id) {
         this.state_id = state_id;
     }
-
+/*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -90,6 +90,7 @@ public class City {
         }
         return mayor;
     }
+    */
     @Override
     public String toString() {
         return "City{" +

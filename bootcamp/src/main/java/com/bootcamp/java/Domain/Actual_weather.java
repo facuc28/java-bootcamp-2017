@@ -19,12 +19,14 @@ public class Actual_weather {
     private String date;
 
     public Actual_weather(){}
+
     public Actual_weather(double temperature, String description, String date) {
-        id_actualWeather = getLastID()+1;
+
         this.temperature = temperature;
         this.description = description;
         this.date = date;
     }
+
     public Actual_weather(Actual_WeatherBuilder builder)
     {
         this.temperature = builder.temperature;
@@ -64,7 +66,7 @@ public class Actual_weather {
         this.date = date;
     }
 
-    private int getLastID()
+   /* private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
@@ -91,6 +93,7 @@ public class Actual_weather {
         }
         return mayor;
     }
+    */
     @Override
     public String toString() {
         return "Actual_weather{" +

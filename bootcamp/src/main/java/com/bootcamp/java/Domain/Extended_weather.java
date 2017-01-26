@@ -22,14 +22,15 @@ public class Extended_weather {
 
 
     public Extended_weather(){}
+
     public Extended_weather(String description, String weekday, double maximum, double minimum, String date) {
-        id_extendedWeather = getLastID()+1;
         this.description = description;
         this.weekday = weekday;
         this.maximum = maximum;
         this.minimum = minimum;
         this.date = date;
     }
+
     public Extended_weather(Extended_WeatherBuilder builder)
     {
         this.description = builder.description;
@@ -86,7 +87,7 @@ public class Extended_weather {
         this.date = text;
     }
 
-
+/*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -114,6 +115,7 @@ public class Extended_weather {
         }
         return mayor;
     }
+    */
 
     @Override
     public String toString() {

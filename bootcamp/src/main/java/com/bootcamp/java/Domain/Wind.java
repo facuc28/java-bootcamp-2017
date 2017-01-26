@@ -16,8 +16,9 @@ public class Wind {
     private int direction;
 
     public Wind(){}
+
     public Wind(int speed, int direction) {
-        id_wind = getLastID()+1;
+
         this.id_wind = id_wind;
         this.speed = speed;
         this.direction = direction;
@@ -51,6 +52,7 @@ public class Wind {
     public void setDirection(int direction) {
         this.direction = direction;
     }
+    /*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -78,6 +80,7 @@ public class Wind {
         }
         return mayor;
     }
+    */
     @Override
     public String toString() {
         return "Wind{" +

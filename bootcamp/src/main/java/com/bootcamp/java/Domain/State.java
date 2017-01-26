@@ -20,8 +20,9 @@ public class State {
         private String abbrev;
 
         public State(){}
+
     public State(int country_id, String name, long area, String capital, String abbrev) {
-        id_state = getLastID()+1;
+
         this.country_id = country_id;
         this.name = name;
         this.area = area;
@@ -85,7 +86,7 @@ public class State {
     public void setAbbrev(String abbrev) {
         this.abbrev = abbrev;
     }
-
+/*
 
     private int getLastID()
     {
@@ -114,6 +115,7 @@ public class State {
         }
         return mayor;
     }
+    */
     @Override
     public String toString() {
         return "State{" +

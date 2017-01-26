@@ -21,13 +21,15 @@ public class Atmosphere {
 
 
     public Atmosphere(){}
+
     public Atmosphere(int humidity, int visibility, int rising, double pressure) {
-        id_atmosphere = getLastID()+1;
+
         this.humidity = humidity;
         this.visibility = visibility;
         this.rising = rising;
         this.pressure = pressure;
     }
+
     public Atmosphere(AtmosphereBuilder builder)
     {
         this.humidity = builder.humidity;
@@ -77,7 +79,7 @@ public class Atmosphere {
     public void setPressure(double pressure) {
         this.pressure = pressure;
     }
-
+/*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -105,6 +107,7 @@ public class Atmosphere {
         }
         return mayor;
     }
+    */
     @Override
     public String toString() {
         return "Atmosphere{" +

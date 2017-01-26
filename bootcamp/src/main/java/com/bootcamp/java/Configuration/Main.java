@@ -1,15 +1,6 @@
 package com.bootcamp.java.Configuration;
 
 import com.bootcamp.java.Persistence.CountryDAO;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.bootcamp.java.Persistence.DBPersistence;
-import com.bootcamp.java.Domain.*;
-
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 
 /**

@@ -1,14 +1,6 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.CountryBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import com.bootcamp.java.Persistence.DBPersistence;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-
-import java.sql.ResultSet;
 
 /**
  * Created by facun on 16/01/2017.
@@ -29,8 +21,7 @@ public class Country {
 
     }
     public Country(String country_code2, String country_code3, String name) {
-        DBPersistence persistence = new DBPersistence();
-        id_country = persistence.getLastID("id_country","country")+1;
+
         this.country_code2 = country_code2;
         this.country_code3 = country_code3;
         this.name = name;
