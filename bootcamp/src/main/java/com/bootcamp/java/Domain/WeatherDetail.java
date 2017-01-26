@@ -9,10 +9,10 @@ public class WeatherDetail {
     private Wind wind;
     private Atmosphere atmosphere;
     private Actual_weather actual_weather;
-    private Extended_weather extended_weather;
+    private Extended_weather[] extended_weather;
     private String Description;
 
-    public WeatherDetail(int id_weatherDetail, Wind wind, Atmosphere atmosphere, Actual_weather actual_weather, Extended_weather extended_weather, String description) {
+    public WeatherDetail(int id_weatherDetail, Wind wind, Atmosphere atmosphere, Actual_weather actual_weather, Extended_weather[] extended_weather, String description) {
         this.id_weatherDetail = id_weatherDetail;
         this.wind = wind;
         this.atmosphere = atmosphere;
@@ -53,11 +53,11 @@ public class WeatherDetail {
         this.actual_weather = actual_weather;
     }
 
-    public Extended_weather getExtended_weather() {
+    public Extended_weather[] getExtended_weather() {
         return extended_weather;
     }
 
-    public void setExtended_weather(Extended_weather extended_weather) {
+    public void setExtended_weather(Extended_weather[] extended_weather) {
         this.extended_weather = extended_weather;
     }
 

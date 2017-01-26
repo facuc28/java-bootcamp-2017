@@ -19,16 +19,18 @@ public class Extended_weather {
     private double maximum;
     private double minimum;
     private String date;
+    private int weather_id;
 
 
     public Extended_weather(){}
 
-    public Extended_weather(String description, String weekday, double maximum, double minimum, String date) {
+    public Extended_weather(String description, String weekday, double maximum, double minimum, String date, int weather_id) {
         this.description = description;
         this.weekday = weekday;
         this.maximum = maximum;
         this.minimum = minimum;
         this.date = date;
+        this.weather_id = weather_id;
     }
 
     public Extended_weather(Extended_WeatherBuilder builder)
@@ -85,6 +87,13 @@ public class Extended_weather {
 
     public void setDate(String text) {
         this.date = text;
+    }
+    public int getWeather_id() {
+        return weather_id;
+    }
+
+    public void setWeather_id(int weather_id) {
+        this.weather_id = weather_id;
     }
 
 /*

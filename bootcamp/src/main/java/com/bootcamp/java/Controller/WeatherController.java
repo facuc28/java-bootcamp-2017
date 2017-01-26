@@ -42,8 +42,8 @@ public class WeatherController {
         Atmosphere atmosphere = atmosphereDAO.getAtmosphere(W.getAtmosphere_id());
         Wind wind = windDAO.getWind(W.getWind_id());
         Actual_weather actual_weather = actual_weatherDAO.getActual_Weather(W.getActual_weather_id());
-        Extended_weather extended_weather = extended_weatherDAO.getExtendedWeather(W.getExtended_weather_id());
-        WeatherDetail weatherDetail = new WeatherDetail(W.getId_weather(), wind, atmosphere, actual_weather, extended_weather, W.getDescription());
+        Extended_weather[] extended_weathers = extended_weatherDAO.getExtendedWeather(W.getId_weather());
+        WeatherDetail weatherDetail = new WeatherDetail(W.getId_weather(), wind, atmosphere, actual_weather, extended_weathers, W.getDescription());
         return new ResponseEntity<WeatherDetail>(weatherDetail, HttpStatus.FOUND);
     }
 
