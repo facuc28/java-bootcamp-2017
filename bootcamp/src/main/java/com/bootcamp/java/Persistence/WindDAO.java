@@ -43,4 +43,20 @@ public class WindDAO {
         }
         return null;
     }
+
+    public void insertWind(Wind W)
+    {
+        //Auxiliaries
+        String sql = "INSERT INTO `bootcamp2`.`wind` (`speed`, `direction`) VALUES ("+W.getSpeed()+", "+W.getDirection()+");";
+            Connection conn;
+            PreparedStatement ps;
+            try {
+                conn = dataBase.getConnection();
+                ps = conn.prepareStatement(sql);
+                ps.execute();
+            }catch (Exception E)
+            {
+                E.printStackTrace();
+            }
+         }
 }

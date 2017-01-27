@@ -52,4 +52,20 @@ public class Extended_WeatherDAO {
         return extended_weathers;
 
     }
+
+    public void insertExtendedWeather(Extended_weather EW)
+    {
+        //Auxiliaries
+        String sql = "INSERT INTO `bootcamp2`.`extended_weather` (`description`, `weekday`, `maximum`, `minimum`, `date`) VALUES ('"+EW.getDescription()+"', '"+EW.getWeekday()+"', '"+EW.getMaximum()+"', '"+EW.getMinimum()+"', '"+EW.getDate()+"');";
+        Connection conn;
+        PreparedStatement ps;
+        try {
+            conn = dataBase.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+    }
 }

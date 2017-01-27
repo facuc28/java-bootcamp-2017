@@ -41,4 +41,20 @@ public class WeatherDAO {
         }
         return null;
     }
+
+    public void insertWeather(Weather W)
+    {
+        //Auxiliaries
+        String sql = "INSERT INTO `bootcamp2`.`weather` (`wind_id`, `atmosphere_id`, `actual_weather_id`, `extended_weather_id`, `description`) VALUES ("+W.getWind_id()+", "+W.getAtmosphere_id()+", "+W.getActual_weather_id()+", "+W.getExtended_weather_id()+", '"+W.getDescription()+"');";
+        Connection conn;
+        PreparedStatement ps;
+        try {
+            conn = dataBase.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+    }
 }

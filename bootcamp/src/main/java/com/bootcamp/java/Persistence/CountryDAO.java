@@ -51,17 +51,15 @@ public class CountryDAO {
         String sql = "SELECT * FROM bootcamp2.country";
         PreparedStatement ps=null;
         Connection conn = null;
-        List<Country> countryList=null;
+        List<Country> countryList = new ArrayList<Country>();
         try {
             conn = dataBase.getConnection();
             ps = conn.prepareStatement(sql);
             Country C = null;
-            countryList = new ArrayList<Country>();
             ResultSet res = ps.executeQuery();
             while(res.next())
-
                 C = new Country(res.getString("country_code2"), res.getString("country_code3"), res.getString("name"));
-            countryList.add(C);
+                countryList.add(C);
 
         }catch (Exception E)
         {

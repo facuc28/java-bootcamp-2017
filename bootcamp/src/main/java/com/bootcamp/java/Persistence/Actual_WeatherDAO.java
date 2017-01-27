@@ -43,4 +43,20 @@ public class Actual_WeatherDAO {
         return null;
 
     }
+
+    public void insertActualWeather(Actual_weather AW)
+    {
+        //Auxiliaries
+        String sql = "INSERT INTO `bootcamp2`.`actual_weather` (`temperature`, `description`, `date`) VALUES ("+AW.getTemperature()+", '"+AW.getDescription()+"', '"+AW.getDate()+"');";
+        Connection conn;
+        PreparedStatement ps;
+        try {
+            conn = dataBase.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+    }
 }

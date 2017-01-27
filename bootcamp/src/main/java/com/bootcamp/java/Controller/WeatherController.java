@@ -5,10 +5,7 @@ import com.bootcamp.java.Persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by facun on 26/01/2017.
@@ -45,6 +42,12 @@ public class WeatherController {
         Extended_weather[] extended_weathers = extended_weatherDAO.getExtendedWeather(W.getId_weather());
         WeatherDetail weatherDetail = new WeatherDetail(W.getId_weather(), wind, atmosphere, actual_weather, extended_weathers, W.getDescription());
         return new ResponseEntity<WeatherDetail>(weatherDetail, HttpStatus.FOUND);
+    }
+
+    @RequestMapping(value="/weather/add", method= RequestMethod.POST)
+    public ResponseEntity<String> insertWeather(@RequestBody Weather weather){
+       weatherDAO.insertWeather(weather);
+        return new ResponseEntity<String>("Weather added succesfully ",HttpStatus.CREATED);
     }
 
 }

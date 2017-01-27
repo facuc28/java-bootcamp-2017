@@ -41,5 +41,20 @@ public class AtmosphereDAO {
         }
         return null;
     }
+    public void insertAtmosphere(Atmosphere A)
+    {
+        //Auxiliaries
+        String sql = "INSERT INTO `bootcamp2`.`atmosphere` (`humidity`, `visibility`, `rising`, `pressure`) VALUES ("+A.getHumidity()+", "+A.getVisibility()+", "+A.getRising()+", "+A.getPressure()+");";
+        Connection conn;
+        PreparedStatement ps;
+        try {
+            conn = dataBase.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
+    }
 
 }
