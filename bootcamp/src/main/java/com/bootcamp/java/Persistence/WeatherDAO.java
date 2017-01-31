@@ -17,7 +17,7 @@ public class WeatherDAO {
     public void setDataBase(DataBaseImpl dataBase) {
         this.dataBase = dataBase;
     }
-
+/*
     public Weather getWeather(int id_weather)
     {
         String sql="SELECT * FROM bootcamp2.weather WHERE id_weather="+id_weather;
@@ -41,7 +41,8 @@ public class WeatherDAO {
         }
         return null;
     }
-
+*/
+/*
     public void insertWeather(Weather W)
     {
         //Auxiliaries
@@ -57,4 +58,5 @@ public class WeatherDAO {
             E.printStackTrace();
         }
     }
+    */
 }

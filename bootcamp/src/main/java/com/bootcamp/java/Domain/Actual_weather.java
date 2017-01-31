@@ -1,18 +1,18 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.Actual_WeatherBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.ParameterMetaData;
-import java.sql.ResultSet;
+
+import javax.persistence.*;
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "actual_weather")
 public class Actual_weather {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_actualWeather;
     private double temperature;
     private  String description;

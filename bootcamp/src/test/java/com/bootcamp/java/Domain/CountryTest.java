@@ -21,14 +21,14 @@ public class CountryTest extends TestCase {
         Country C = new CountryBuilder()
                 .country_code2("AR")
                 .build();
-        assertEquals("AR", C.getCountry_code2());
+        assertEquals("AR", C.getCountryCode2());
     }
 
     public void testGetCountry_code3() throws Exception {
         Country C = new CountryBuilder()
                 .country_code3("ARG")
                 .build();
-        assertEquals("ARG", C.getCountry_code3());
+        assertEquals("ARG", C.getCountryCode3());
     }
 
 }

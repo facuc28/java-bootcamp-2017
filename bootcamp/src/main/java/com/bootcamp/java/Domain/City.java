@@ -5,31 +5,33 @@ import com.bootcamp.java.Configuration.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "city")
 public class City {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_city;
     private String name;
-    private int weather_id;
-    private int state_id;
+    @ManyToOne
+    @JoinColumn(name = "id_state")
+    private State state;
 
     public City(){}
-
-    public City(String name, int weather_id, int state_id) {
+    public City(String name, State state) {
         this.name = name;
-        this.weather_id = weather_id;
-        this.state_id = state_id;
+       this.state = state;
     }
 
     public City(CityBuilder builder)
     {
         this.name = builder.name;
-        this.weather_id = builder.weather_id;
-        this.state_id = builder.state_id;
+        this.state = builder.state;
     }
     public int getId_city() {
         return id_city;
@@ -47,57 +49,20 @@ public class City {
         this.name = name;
     }
 
-    public int getWeather_id() {
-        return weather_id;
+    public State getState() {
+        return state;
     }
 
-    public void setWeather_id(int weather_id) {
-        this.weather_id = weather_id;
+    public void setState(State state) {
+        this.state = state;
     }
 
-    public int getState_id() {
-        return state_id;
-    }
-
-    public void setState_id(int state_id) {
-        this.state_id = state_id;
-    }
-/*
-    private int getLastID()
-    {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
-        String sql = "SELECT id_city FROM bootcamp2.city";
-        ResultSet result = DB.DBRequest(sql);
-        boolean flag;
-        int mayor=0;
-        try {
-            while(result.next())
-            {
-                if (flag=false)
-                {
-                    mayor = result.getInt("id_city");
-                    flag = true;
-                }
-                if (result.getInt("id_city")>mayor)
-                {
-                    mayor = result.getInt("id_city");
-                }
-            }
-        }catch (Exception E)
-        {
-            E.printStackTrace();
-        }
-        return mayor;
-    }
-    */
     @Override
     public String toString() {
         return "City{" +
                 "id_city=" + id_city +
                 ", name='" + name + '\'' +
-                ", weather_id=" + weather_id +
-                ", state_id=" + state_id +
+                ", state=" + state +
                 '}';
     }
 }

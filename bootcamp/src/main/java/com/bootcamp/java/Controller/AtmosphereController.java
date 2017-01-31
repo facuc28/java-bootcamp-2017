@@ -2,6 +2,7 @@ package com.bootcamp.java.Controller;
 
 import com.bootcamp.java.Domain.Atmosphere;
 import com.bootcamp.java.Persistence.AtmosphereDAO;
+import com.bootcamp.java.repository.AtmosphereRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AtmosphereController {
     @Autowired
-    private AtmosphereDAO atmosphereDAO;
+    AtmosphereRepository atmosphereRepository;
 
     @RequestMapping(value="/atmosphere/add", method= RequestMethod.POST)
     public ResponseEntity<String> insertAtmosphere(@RequestBody Atmosphere atmosphere){
-            atmosphereDAO.insertAtmosphere(atmosphere);
+            atmosphereRepository.save(atmosphere);
         return new ResponseEntity<String>("Atmosphere added succesfully ", HttpStatus.CREATED);
     }
 

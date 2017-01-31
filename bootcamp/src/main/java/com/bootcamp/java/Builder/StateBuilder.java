@@ -1,5 +1,6 @@
 package com.bootcamp.java.Builder;
 
+import com.bootcamp.java.Domain.Country;
 import com.bootcamp.java.Domain.State;
 
 /**
@@ -8,15 +9,15 @@ import com.bootcamp.java.Domain.State;
 public class StateBuilder {
 
     public int id_state;
-    public int country_id;
+    public Country country;
     public String name;
     public long area;
     public String capital;
     public String abbrev;
 
-    public StateBuilder country_id(int country_id)
+    public StateBuilder country(Country country)
     {
-        this.country_id = country_id;
+        this.country = country;
         return this;
     }
     public StateBuilder name(String name)

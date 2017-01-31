@@ -20,7 +20,7 @@ public class CountryDAO {
     public void setDataBase(DataBaseImpl dataBase) {
         this.dataBase = dataBase;
     }
-
+/*
     public Country getCountry(String name) {
             //Auxiliaries
 
@@ -72,7 +72,7 @@ public class CountryDAO {
     public void insertCountry(Country C)
     {
         //Auxiliaries
-        String sql = "INSERT INTO `bootcamp2`.`country` (`country_code2`, `country_code3`, `name`) VALUES ('"+C.getCountry_code2()+"'"+", '"+C.getCountry_code3()+"', '"+C.getName()+"');";
+        String sql = "INSERT INTO `bootcamp2`.`country` (`country_code2`, `country_code3`, `name`) VALUES ('"+C.getCountryCode2()+"'"+", '"+C.getCountryCode3()+"', '"+C.getName()+"');";
         Connection conn = null;
         PreparedStatement ps;
         try {
@@ -84,5 +84,5 @@ public class CountryDAO {
             E.printStackTrace();
         }
     }
-
+*/
 }

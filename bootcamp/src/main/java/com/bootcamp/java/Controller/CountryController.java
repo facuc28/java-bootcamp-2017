@@ -2,6 +2,7 @@ package com.bootcamp.java.Controller;
 
 import com.bootcamp.java.Domain.Country;
 import com.bootcamp.java.Persistence.CountryDAO;
+import com.bootcamp.java.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,26 +16,27 @@ import java.util.List;
 @RestController
 public class CountryController {
     @Autowired
-    CountryDAO countryDAO;
+    CountryRepository countryRepository;
 
     @RequestMapping(value = "/countries", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<List<Country>> getCountries()
     {
-        List<Country> listOfCountries = new ArrayList<Country>();
-        listOfCountries= countryDAO.getCountries();
+        List<Country> listOfCountries = new ArrayList<>();
+        countryRepository.findAll().forEach(listOfCountries::add);
         return new ResponseEntity<List<Country>>(listOfCountries,HttpStatus.FOUND);
     }
     @RequestMapping(value = "/country/{name}", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<Country> getCountry(@PathVariable String name)
     {
         Country C;
-        C = countryDAO.getCountry(name);
+        C = countryRepository.findByName(name);
         return new ResponseEntity<Country>(C, HttpStatus.FOUND);
     }
 
     @RequestMapping(value="/country/add", method= RequestMethod.POST)
     public ResponseEntity<String> insertCountry(@RequestBody Country country){
-            countryDAO.insertCountry(country);
+          countryRepository.save(country);
         return new ResponseEntity<String>("Country added succesfully ",HttpStatus.CREATED);
     }
+
 }

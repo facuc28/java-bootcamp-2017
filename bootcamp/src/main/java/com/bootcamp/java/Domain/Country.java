@@ -2,28 +2,36 @@ package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.CountryBuilder;
 
+import javax.persistence.*;
+
 /**
  * Created by facun on 16/01/2017.
  */
-
+@Entity
+@Table(name = "country")
 public class Country {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private  int id_country;
-    private String country_code2;
-    private String country_code3;
+    @Column(length = 2)
+    private String countryCode2;
+    @Column(length = 3)
+    private String countryCode3;
     private String name;
 
     public Country(){}
+
     public Country(CountryBuilder builder)
     {
-        this.country_code2 = builder.country_code2;
-        this.country_code3 = builder.country_code3;
+        this.countryCode2 = builder.country_code2;
+        this.countryCode3 = builder.country_code3;
         this.name = builder.name;
 
     }
-    public Country(String country_code2, String country_code3, String name) {
+    public Country(String countryCode2, String countryCode3, String name) {
 
-        this.country_code2 = country_code2;
-        this.country_code3 = country_code3;
+        this.countryCode2 = countryCode2;
+        this.countryCode3 = countryCode3;
         this.name = name;
     }
 
@@ -35,20 +43,20 @@ public class Country {
         this.id_country = id_country;
     }
 
-    public String getCountry_code2() {
-        return country_code2;
+    public String getCountryCode2() {
+        return countryCode2;
     }
 
-    public void setCountry_code2(String country_code2) {
-        this.country_code2 = country_code2;
+    public void setCountryCode2(String countryCode2) {
+        this.countryCode2 = countryCode2;
     }
 
-    public String getCountry_code3() {
-        return country_code3;
+    public String getCountryCode3() {
+        return countryCode3;
     }
 
-    public void setCountry_code3(String country_code3) {
-        this.country_code3 = country_code3;
+    public void setCountryCode3(String countryCode3) {
+        this.countryCode3 = countryCode3;
     }
 
     public String getName() {
@@ -65,8 +73,8 @@ public class Country {
     public String toString() {
         return "Country{" +
                 "id_country=" + id_country +
-                ", country_code2='" + country_code2 + '\'' +
-                ", country_code3='" + country_code3 + '\'' +
+                ", countryCode2='" + countryCode2 + '\'' +
+                ", countryCode3='" + countryCode3 + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

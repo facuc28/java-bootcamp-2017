@@ -11,7 +11,7 @@ public class Main {
     public static void main(String args[])
     {
         CountryDAO countryDAO = new CountryDAO();
-        System.out.println(countryDAO.getCountries());
+        //System.out.println(countryDAO.getCountries());
 
         /*
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Beans-servlet.xml");

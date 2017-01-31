@@ -1,8 +1,8 @@
 package com.bootcamp.java.Controller;
 
-import com.bootcamp.java.Domain.Country;
+
 import com.bootcamp.java.Domain.Extended_weather;
-import com.bootcamp.java.Persistence.Extended_WeatherDAO;
+import com.bootcamp.java.repository.ExtendedWeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Extended_WeatherController {
     @Autowired
-    private Extended_WeatherDAO extended_weatherDAO;
+    ExtendedWeatherRepository extendedWeatherRepository;
     @RequestMapping(value="/extendedweather/add", method= RequestMethod.POST)
     public ResponseEntity<String> insertExtended_Weather(@RequestBody Extended_weather extended_weather){
-        extended_weatherDAO.insertExtendedWeather(extended_weather);
+        extendedWeatherRepository.save(extended_weather);
         return new ResponseEntity<String>("Extended weather added succesfully ", HttpStatus.CREATED);
     }
 }

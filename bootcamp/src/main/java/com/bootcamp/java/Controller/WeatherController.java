@@ -26,7 +26,9 @@ public class WeatherController {
     Extended_WeatherDAO extended_weatherDAO;
     @Autowired
     WindDAO windDAO;
+    /*
     @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
+
     public ResponseEntity<WeatherDetail> getWeatherPearCity(@PathVariable String state, @PathVariable String city)
     {
         State S =  stateDAO.getState(state);
@@ -49,5 +51,5 @@ public class WeatherController {
        weatherDAO.insertWeather(weather);
         return new ResponseEntity<String>("Weather added succesfully ",HttpStatus.CREATED);
     }
-
+*/
 }

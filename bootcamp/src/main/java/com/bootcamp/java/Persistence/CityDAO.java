@@ -19,7 +19,7 @@ public class CityDAO {
     public void setDataBase(DataBaseImpl dataBase) {
         this.dataBase = dataBase;
     }
-
+/*
     public void insertCity(City C)
     {
         //Auxiliaries
@@ -36,6 +36,8 @@ public class CityDAO {
             E.printStackTrace();
         }
     }
+    */
+    /*
     public City getCity(String name)
     {
         String sql="SELECT * FROM bootcamp2.city WHERE name='"+name+"'";
@@ -58,6 +60,6 @@ public class CityDAO {
             E.printStackTrace();
         }
       return null;
-    }
+    }*/
 
 }

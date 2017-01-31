@@ -5,12 +5,17 @@ import com.bootcamp.java.Configuration.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "wind")
 public class Wind {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_wind;
     private int speed;
     private int direction;

@@ -18,7 +18,7 @@ public class Extended_WeatherDAO {
     public void setDataBase(DataBaseImpl dataBase) {
         this.dataBase = dataBase;
     }
-
+    /*
     public Extended_weather[] getExtendedWeather(int id_weather)
     {
         //Auxiliaries
@@ -52,7 +52,7 @@ public class Extended_WeatherDAO {
         return extended_weathers;
 
     }
-
+*/
     public void insertExtendedWeather(Extended_weather EW)
     {
         //Auxiliaries

@@ -7,30 +7,37 @@ import com.bootcamp.java.Configuration.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.persistence.*;
+
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "extended_weather")
 public class Extended_weather {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_extendedWeather;
     private String description;
     private String weekday;
     private double maximum;
     private double minimum;
     private String date;
-    private int weather_id;
+    @ManyToOne
+    @JoinColumn(name = "id_weather")
+    private Weather weather;
 
 
     public Extended_weather(){}
 
-    public Extended_weather(String description, String weekday, double maximum, double minimum, String date, int weather_id) {
+    public Extended_weather(String description, String weekday, double maximum, double minimum, String date, Weather weather) {
         this.description = description;
         this.weekday = weekday;
         this.maximum = maximum;
         this.minimum = minimum;
         this.date = date;
-        this.weather_id = weather_id;
+        this.weather = weather;
     }
 
     public Extended_weather(Extended_WeatherBuilder builder)
@@ -88,15 +95,15 @@ public class Extended_weather {
     public void setDate(String text) {
         this.date = text;
     }
-    public int getWeather_id() {
-        return weather_id;
+
+    public Weather getWeather() {
+        return weather;
     }
 
-    public void setWeather_id(int weather_id) {
-        this.weather_id = weather_id;
+    public void setWeather(Weather weather) {
+        this.weather = weather;
     }
-
-/*
+   /*
     private int getLastID()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");

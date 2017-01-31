@@ -16,7 +16,7 @@ public class StateTest extends TestCase {
         assertEquals("Cordoba", state.getName());
 
     }
-
+/*
     public void testGetCountry_id() throws Exception {
         State state = new StateBuilder()
                 .country_id(1)
@@ -38,7 +38,7 @@ public class StateTest extends TestCase {
         assertEquals("Cordoba", state.getCapital());
 
     }
-
+*/
     public void testGetAbbrev() throws Exception {
         State state = new StateBuilder()
                 .abbrev("CO")

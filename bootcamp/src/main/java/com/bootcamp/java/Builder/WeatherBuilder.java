@@ -1,36 +1,36 @@
 package com.bootcamp.java.Builder;
 
-import com.bootcamp.java.Domain.Weather;
+import com.bootcamp.java.Domain.*;
 
 /**
  * Created by facun on 20/01/2017.
  */
 public class WeatherBuilder {
 
-    public int wind_id;
-    public int atmosphere_id;
-    public int actual_weather_id;
-    public int extended_weather_id;
+    public Wind wind;
+    public Atmosphere atmosphere;
+    public Actual_weather actual_weather;
+    public Extended_weather extended_weather;
     public String description;
 
-    public  WeatherBuilder wind_id(int wind_id)
+    public  WeatherBuilder wind_id(Wind wind)
     {
-        this.wind_id = wind_id;
+        this.wind = wind;
         return this;
     }
-    public  WeatherBuilder atmosphere_id(int atmosphere_id)
+    public  WeatherBuilder atmosphere_id(Atmosphere atmosphere)
     {
-        this.atmosphere_id = atmosphere_id;
+        this.atmosphere = atmosphere;
         return this;
     }
-    public  WeatherBuilder actual_weather_id(int actual_weather_id)
+    public  WeatherBuilder actual_weather_id(Actual_weather actual_weather)
     {
-        this.actual_weather_id = actual_weather_id;
+        this.actual_weather = actual_weather;
         return this;
     }
-    public  WeatherBuilder extended_weather_id(int extended_weather_id)
+    public  WeatherBuilder extended_weather_id(Extended_weather extended_weather)
     {
-        this.extended_weather_id = extended_weather_id;
+        this.extended_weather = extended_weather;
         return this;
     }
     public  WeatherBuilder description(String description)

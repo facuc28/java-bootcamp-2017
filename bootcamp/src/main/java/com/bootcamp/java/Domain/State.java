@@ -1,29 +1,34 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.StateBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.ResultSet;
+import javax.persistence.*;
+
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "state")
 public class State {
-
+       @Id
+       @GeneratedValue(strategy = GenerationType.AUTO)
         private int id_state;
-        private int country_id;
+       @ManyToOne
+       @JoinColumn(name = "id_country")
+        private Country country;
         private String name;
         private long area;
+        private String countryCode3;
         private String capital;
+        @Column(length = 2)
         private String abbrev;
 
         public State(){}
 
-    public State(int country_id, String name, long area, String capital, String abbrev) {
-
-        this.country_id = country_id;
+    public State(Country country, String name, long area, String capital, String abbrev, String countryCode3) {
+       this.country = country;
+       this.countryCode3 = countryCode3;
         this.name = name;
         this.area = area;
         this.capital = capital;
@@ -32,11 +37,19 @@ public class State {
 
     public State(StateBuilder builder)
     {
-        this.country_id = builder.country_id;
+        this.country = builder.country;
         this.name = builder.name;
         this.area = builder.area;
         this.capital =builder.capital;
         this.abbrev = builder.abbrev;
+    }
+
+    public String getCountryCode3() {
+        return countryCode3;
+    }
+
+    public void setCountryCode3(String countryCode3) {
+        this.countryCode3 = countryCode3;
     }
 
     public int getId_state() {
@@ -47,12 +60,12 @@ public class State {
         this.id_state = id_state;
     }
 
-    public int getCountry_id() {
-        return country_id;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountry_id(int country_id) {
-        this.country_id = country_id;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getName() {
@@ -120,7 +133,7 @@ public class State {
     public String toString() {
         return "State{" +
                 "id_state=" + id_state +
-                ", country_id=" + country_id +
+                ", country_id=" + country +
                 ", name='" + name + '\'' +
                 ", area=" + area +
                 ", capital='" + capital + '\'' +

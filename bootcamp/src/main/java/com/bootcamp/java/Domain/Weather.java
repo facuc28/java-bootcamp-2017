@@ -1,38 +1,55 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.WeatherBuilder;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 
 /**
  * Created by facun on 16/01/2017.
  */
+@Entity
+@Table(name = "weather")
 public class Weather {
-
+        @javax.persistence.Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private int id_weather;
-        private int wind_id;
-        private int atmosphere_id;
-        private int actual_weather_id;
-        private int extended_weather_id;
+        @ManyToOne
+        @JoinColumn(name = "id_wind")
+        private Wind wind;
+        @ManyToOne
+        @JoinColumn(name = "id_atmosphere")
+        private Atmosphere atmosphere;
+        @ManyToOne
+        @JoinColumn(name = "actual_weather_id")
+        private Actual_weather actual_weather;
+        @ManyToOne
+        @JoinColumn(name = "extended_weather_id")
+        private Extended_weather extended_weather;
         private String description;
 
-        public  Weather(){}
 
-    public Weather(int wind_id, int atmosphere_id, int actual_weather_id, int extended_weather_id, String description) {
+    public  Weather(){}
 
-        this.wind_id = wind_id;
-        this.atmosphere_id = atmosphere_id;
-        this.actual_weather_id = actual_weather_id;
-        this.extended_weather_id = extended_weather_id;
-        this.description = description;
-    }
 
     public Weather(WeatherBuilder builder)
     {
-        this.wind_id = builder.wind_id;
-        this.atmosphere_id = builder.atmosphere_id;
-        this.actual_weather_id = builder.actual_weather_id;
-        this.extended_weather_id = builder.extended_weather_id;
+       this.wind = builder.wind;
+        this.atmosphere = builder.atmosphere;
+        this.actual_weather = builder.actual_weather;
+        this.extended_weather = builder.extended_weather;
         this.description = builder.description;
     }
+
+    public Weather(int id_weather, Wind wind, Atmosphere atmosphere, Actual_weather actual_weather, Extended_weather extended_weather, String description) {
+        this.id_weather = id_weather;
+        this.wind = wind;
+        this.atmosphere = atmosphere;
+        this.actual_weather = actual_weather;
+        this.extended_weather = extended_weather;
+        this.description = description;
+    }
+
     public int getId_weather() {
         return id_weather;
     }
@@ -41,36 +58,36 @@ public class Weather {
         this.id_weather = id_weather;
     }
 
-    public int getWind_id() {
-        return wind_id;
+    public Wind getWind() {
+        return wind;
     }
 
-    public void setWind_id(int wind_id) {
-        this.wind_id = wind_id;
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 
-    public int getAtmosphere_id() {
-        return atmosphere_id;
+    public Atmosphere getAtmosphere() {
+        return atmosphere;
     }
 
-    public void setAtmosphere_id(int atmosphere_id) {
-        this.atmosphere_id = atmosphere_id;
+    public void setAtmosphere(Atmosphere atmosphere) {
+        this.atmosphere = atmosphere;
     }
 
-    public int getActual_weather_id() {
-        return actual_weather_id;
+    public Actual_weather getActual_weather() {
+        return actual_weather;
     }
 
-    public void setActual_weather_id(int actual_weather_id) {
-        this.actual_weather_id = actual_weather_id;
+    public void setActual_weather(Actual_weather actual_weather) {
+        this.actual_weather = actual_weather;
     }
 
-    public int getExtended_weather_id() {
-        return extended_weather_id;
+    public Extended_weather getExtended_weather() {
+        return extended_weather;
     }
 
-    public void setExtended_weather_id(int extended_weather_id) {
-        this.extended_weather_id = extended_weather_id;
+    public void setExtended_weather(Extended_weather extended_weather) {
+        this.extended_weather = extended_weather;
     }
 
     public String getDescription() {
@@ -80,47 +97,16 @@ public class Weather {
     public void setDescription(String description) {
         this.description = description;
     }
-/*
-    private int getLastID()
-    {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        DataBase DB = applicationContext.getBean("dataBase", DataBase.class);
-        String sql = "SELECT id_weather FROM bootcamp2.weather";
-        ResultSet result = DB.DBRequest(sql);
-        boolean flag;
-        int mayor=0;
-        try {
-            while(result.next())
-            {
-                if (flag=false)
-                {
-                    mayor = result.getInt("id_weather");
-                    flag = true;
-                }
-                if (result.getInt("id_weather")>mayor)
-                {
-                    mayor = result.getInt("id_weather");
-                }
-            }
-        }catch (Exception E)
-        {
-            E.printStackTrace();
-        }
-        return mayor;
-    }
-    */
 
-    /*
+    @Override
     public String toString() {
-            //auxiliaries
-        DBPersistence persistence = new DBPersistence();
-        return "Weather information: {" + description +
-                "\n Wind Information= " + persistence.getWind(wind_id).toString() +
-                "\n Atmosphere Information: " + persistence.getAtmosphere(atmosphere_id).toString() +
-                "\n Actual Weather: " + persistence.getActualWeather(actual_weather_id).toString() +
-                "\n Extended Weather: " + persistence.getExtendedWeather(extended_weather_id).toString() +
+        return "Weather{" +
+                "id_weather=" + id_weather +
+                ", wind=" + wind +
+                ", atmosphere=" + atmosphere +
+                ", actual_weather=" + actual_weather +
+                ", extended_weather=" + extended_weather +
                 ", description='" + description + '\'' +
                 '}';
     }
-    */
 }

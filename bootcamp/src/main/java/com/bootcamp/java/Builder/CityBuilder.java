@@ -1,15 +1,25 @@
 package com.bootcamp.java.Builder;
 
 import com.bootcamp.java.Domain.City;
+import com.bootcamp.java.Domain.State;
+import jdk.nashorn.internal.runtime.logging.Logger;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by facun on 19/01/2017.
  */
 public class CityBuilder {
-
+    @Id
+    @GeneratedValue
+    private int id_city;
     public String name;
-    public int weather_id;
-    public int state_id;
+    @ManyToOne
+    @JoinColumn(name = "id_state")
+    public State state;
 
 
     public CityBuilder name(String name)
@@ -18,14 +28,9 @@ public class CityBuilder {
         return this;
     }
 
-    public CityBuilder weather_id(int weather_id)
+    public CityBuilder state_id(State state)
     {
-        this.weather_id = weather_id;
-        return this;
-    }
-    public CityBuilder state_id(int state_id)
-    {
-        this.state_id = state_id;
+        this.state = state;
         return this;
     }
     public City build()

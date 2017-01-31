@@ -16,7 +16,7 @@ public class StateDAO {
     public void setDataBase(DataBaseImpl dataBase) {
         this.dataBase = dataBase;
     }
-
+/*
     public void insertState(State S)
     {
         //Auxiliaries
@@ -34,6 +34,8 @@ public class StateDAO {
         }
 
     }
+    */
+    /*
     public State getState(String name)
     {
         //Auxiliaries
@@ -58,4 +60,5 @@ public class StateDAO {
         }
         return null;
     }
+    */
 }

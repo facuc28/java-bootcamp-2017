@@ -16,7 +16,7 @@ public class CityTest extends TestCase {
                 .build();
         assertEquals("Almafuerte", city.getName());
     }
-
+/*
     public void testGetWeather_id() throws Exception {
 
         City city = new CityBuilder()
@@ -32,5 +32,5 @@ public class CityTest extends TestCase {
                 .build();
         assertEquals(1,city.getState_id());
     }
-
+*/
 }
