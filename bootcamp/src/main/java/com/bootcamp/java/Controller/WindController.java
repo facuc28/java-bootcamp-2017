@@ -1,7 +1,6 @@
 package com.bootcamp.java.Controller;
 
 import com.bootcamp.java.Domain.Wind;
-import com.bootcamp.java.Persistence.WindDAO;
 import com.bootcamp.java.repository.WindRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

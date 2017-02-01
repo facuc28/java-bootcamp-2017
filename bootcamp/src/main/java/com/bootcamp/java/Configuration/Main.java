@@ -1,6 +1,6 @@
 package com.bootcamp.java.Configuration;
 
-import com.bootcamp.java.Persistence.CountryDAO;
+
 
 
 /**
@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String args[])
     {
-        CountryDAO countryDAO = new CountryDAO();
+
         //System.out.println(countryDAO.getCountries());
 
         /*

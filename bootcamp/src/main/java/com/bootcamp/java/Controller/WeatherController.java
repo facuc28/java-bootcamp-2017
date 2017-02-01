@@ -1,7 +1,6 @@
 package com.bootcamp.java.Controller;
 
 import com.bootcamp.java.Domain.*;
-import com.bootcamp.java.Persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,20 +11,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class WeatherController {
-    @Autowired
-    WeatherDAO weatherDAO;
-    @Autowired
-    StateDAO stateDAO;
-    @Autowired
-    CityDAO cityDAO;
-    @Autowired
-    AtmosphereDAO atmosphereDAO;
-    @Autowired
-    Actual_WeatherDAO actual_weatherDAO;
-    @Autowired
-    Extended_WeatherDAO extended_weatherDAO;
-    @Autowired
-    WindDAO windDAO;
+
     /*
     @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
 
