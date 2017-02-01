@@ -1,6 +1,8 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.CountryBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
 
@@ -10,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "country")
 public class Country {
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  int id_country;

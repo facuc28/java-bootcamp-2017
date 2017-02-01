@@ -1,6 +1,8 @@
 package com.bootcamp.java.service;
 
 import com.bootcamp.java.Domain.Country;
+import com.bootcamp.java.adapter.AdapterCountry;
+import com.bootcamp.java.adapter.RestResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +14,9 @@ import java.util.List;
 /**
  * Created by facun on 31/01/2017.
  */
-@WebService
+
 @Path("/country")
+@Produces("application/json")
 public interface CountryWService {
     @GET
     @Path("/{name}")
@@ -26,5 +29,5 @@ public interface CountryWService {
     @GET
     @Path("/get/all")
     @Produces("application/json")
-    ResponseEntity<List<Country>> getCountries();
+    RestResponse getCountries();
 }

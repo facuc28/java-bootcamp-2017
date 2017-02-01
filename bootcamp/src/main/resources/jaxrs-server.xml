@@ -11,8 +11,6 @@
         http://cxf.apache.org/schemas/jaxrs.xsd
         ">
 
-
-
         <jaxrs:server id="services" address="/">
             <jaxrs:serviceBeans>
         <bean class="com.bootcamp.java.Controller.CountryController" />
