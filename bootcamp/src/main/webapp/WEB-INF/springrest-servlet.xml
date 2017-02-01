@@ -68,16 +68,11 @@
     </bean>
     <jpa:repositories base-package="com.bootcamp.java.repository"/>
 
-    <import resource="classpath:META-INF/cxf/cxf.xml"/>
-    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
-    <jaxrs:server id="services" address="/">
-        <jaxrs:serviceBeans>
-            <bean class="com.bootcamp.java.Controller.CountryController"/>
-        </jaxrs:serviceBeans>
+    <jaxrs:client id="CountryWService"
+                  serviceClass="com.bootcamp.java.service.CountryWService"
+                  address="http://services.groupkt.com">
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
         </jaxrs:providers>
-    </jaxrs:server>
-
-
+    </jaxrs:client>
 </beans>

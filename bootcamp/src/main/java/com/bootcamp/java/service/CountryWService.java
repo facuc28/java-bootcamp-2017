@@ -24,7 +24,7 @@ public interface CountryWService {
     @Consumes("application/json")
     ResponseEntity<String> saveCountry(@RequestBody Country country);
     @GET
-    @Path("/")
+    @Path("/get/all")
     @Produces("application/json")
     ResponseEntity<List<Country>> getCountries();
 }
