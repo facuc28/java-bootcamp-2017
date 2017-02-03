@@ -79,7 +79,7 @@ public class Proxy {
     public WeatherDetail getWeather(String state, String city)
     {
         //Adapters objects
-        String q="select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)";
+        String q="select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+city+"%2C%20"+state+"%22)";
         String format="json";
         String env="store://datatables.org/alltableswithkeys";
         RestResponseWeather restResponseWeather = weatherWService.getWeather(q,format,env);

@@ -26,4 +26,9 @@ public class Extended_WeatherController {
         extendedWeatherRepository.save(extended_weather);
         return new ResponseEntity<String>("Extended weather added succesfully ", HttpStatus.CREATED);
     }
+    @RequestMapping(value = "extendedweather/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<Extended_weather> getExtendedWeather(@PathVariable int id)
+    {
+        return new ResponseEntity<Extended_weather>(extendedWeatherRepository.findOne(id), HttpStatus.FOUND);
+    }
 }

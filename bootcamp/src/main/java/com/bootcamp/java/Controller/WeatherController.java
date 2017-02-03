@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.Produces;
 
 /**
@@ -30,6 +32,7 @@ public class WeatherController {
     @RequestMapping(value = "/weather/db/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<WeatherDetail> getWeatherForCity(@PathVariable String state, @PathVariable String city)
     {
+
         return new ResponseEntity<WeatherDetail>(proxy.getWeatherForCity(state,city), HttpStatus.FOUND);
     }
 
@@ -42,5 +45,10 @@ public class WeatherController {
     public  ResponseEntity<WeatherDetail> getWeather(@PathVariable String state, @PathVariable String city)
     {
         return new ResponseEntity<WeatherDetail>(proxy.getWeather(state,city),HttpStatus.FOUND);
+    }
+    @RequestMapping(value = "/weather/{id}", method = RequestMethod.GET, headers="Accept=application/json")
+    public ResponseEntity<Weather> getWeatherId(@PathVariable int id)
+    {
+        return new ResponseEntity<Weather>(weatherRepository.findOne(id),HttpStatus.FOUND);
     }
 }

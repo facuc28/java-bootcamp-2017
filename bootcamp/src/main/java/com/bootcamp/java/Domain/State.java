@@ -16,6 +16,7 @@ public class State {
        @Id
        @GeneratedValue(strategy = GenerationType.AUTO)
         private int id_state;
+       @JsonIgnore
        @ManyToOne
        @JoinColumn(name = "id_country")
         private Country country;

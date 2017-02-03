@@ -25,5 +25,10 @@ public class CityController {
 
         return new ResponseEntity<String>("City successfully added", HttpStatus.CREATED);
     }
+    @RequestMapping(value = "city/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<City> getCity(@PathVariable String name)
+    {
+        return new ResponseEntity<City>(cityRepository.findByName(name),HttpStatus.FOUND);
+    }
 
 }

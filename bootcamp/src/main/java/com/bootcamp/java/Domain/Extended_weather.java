@@ -3,6 +3,8 @@ package com.bootcamp.java.Domain;
 
 
 import com.bootcamp.java.Builder.Extended_WeatherBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -22,6 +24,7 @@ public class Extended_weather {
     private String date;
     @ManyToOne
     @JoinColumn(name = "id_weather")
+    @JsonIgnore
     private Weather weather;
 
 
