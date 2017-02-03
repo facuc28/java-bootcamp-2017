@@ -12,7 +12,7 @@ public class WeatherDetail {
     private Extended_weather[] extended_weather;
     private String Description;
 
-    public WeatherDetail(int id_weatherDetail, Wind wind, Atmosphere atmosphere, Actual_weather actual_weather, Extended_weather[] extended_weather, String description) {
+    public WeatherDetail(Wind wind, Atmosphere atmosphere, Actual_weather actual_weather, Extended_weather[] extended_weather, String description) {
         this.id_weatherDetail = id_weatherDetail;
         this.wind = wind;
         this.atmosphere = atmosphere;

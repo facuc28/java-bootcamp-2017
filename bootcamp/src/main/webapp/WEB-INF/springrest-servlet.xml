@@ -18,11 +18,24 @@
     <context:component-scan base-package="com.bootcamp.java.Configuration" />
     <import resource="classpath:jpa-config.xml"/>
 
-    <!-- Jaxrs client configuration -->
+    <!-- Jaxrs client configuration for Country and States -->
     <jaxrs-client:client id="countryWService"
                   serviceClass="com.bootcamp.java.service.CountryWService"
                   address="http://services.groupkt.com"
                   inheritHeaders="true">
+        <jaxrs-client:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+        </jaxrs-client:providers>
+        <jaxrs-client:headers>
+            <entry key="Accept" value="application/json"/>
+        </jaxrs-client:headers>
+    </jaxrs-client:client>
+
+    <!-- Jaxrs client configuration for Weather -->
+    <jaxrs-client:client id="weatherWService"
+                         serviceClass="com.bootcamp.java.service.WeatherWService"
+                         address="https://query.yahooapis.com/v1/public/yql"
+                         inheritHeaders="true">
         <jaxrs-client:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
         </jaxrs-client:providers>

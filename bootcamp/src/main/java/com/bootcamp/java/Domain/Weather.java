@@ -27,7 +27,7 @@ public class Weather {
         @JoinColumn(name = "extended_weather_id")
         private Extended_weather extended_weather;
         private String description;
-
+        private int idCity;
 
     public  Weather(){}
 
@@ -48,6 +48,14 @@ public class Weather {
         this.actual_weather = actual_weather;
         this.extended_weather = extended_weather;
         this.description = description;
+    }
+
+    public int getIdCity() {
+        return idCity;
+    }
+
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
     }
 
     public int getId_weather() {

@@ -1,6 +1,7 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.StateBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "state")
 public class State {
+       @JsonIgnore
        @Id
        @GeneratedValue(strategy = GenerationType.AUTO)
         private int id_state;
@@ -42,6 +44,7 @@ public class State {
         this.area = builder.area;
         this.capital =builder.capital;
         this.abbrev = builder.abbrev;
+        this.countryCode3 = builder.countryCode3;
     }
 
     public String getCountryCode3() {

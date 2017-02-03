@@ -14,7 +14,13 @@ public class StateBuilder {
     public long area;
     public String capital;
     public String abbrev;
+    public String countryCode3;
 
+    public StateBuilder countryCode3(String countryCode3)
+    {
+        this.countryCode3 = countryCode3;
+        return this;
+    }
     public StateBuilder country(Country country)
     {
         this.country = country;

@@ -4,14 +4,11 @@ import com.bootcamp.java.Domain.Country;
 
 import com.bootcamp.java.proxy.Proxy;
 import com.bootcamp.java.repository.CountryRepository;
-import com.bootcamp.java.service.CountryWService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +24,12 @@ public class CountryController{
     @RequestMapping(value = "/country", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<List<Country>> getCountries()
     {
-        /*
-        List<Country> listOfCountries = new ArrayList<>();
-        countryRepository.findAll().forEach(listOfCountries::add);
-        */
+        if (proxy.getCountries()==null)
+        {
+            List<Country> listOfCountries = new ArrayList<>();
+            countryRepository.findAll().forEach(listOfCountries::add);
+            return new ResponseEntity<List<Country>>(listOfCountries,HttpStatus.FOUND);
+        }
         return new ResponseEntity<List<Country>>(proxy.getCountries(),HttpStatus.FOUND);
     }
     @RequestMapping(value = "/country/{name}", method = RequestMethod.GET,headers="Accept=application/json")

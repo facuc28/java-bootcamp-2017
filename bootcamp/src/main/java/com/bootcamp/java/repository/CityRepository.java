@@ -7,4 +7,7 @@ import org.springframework.data.repository.CrudRepository;
  * Created by facun on 30/01/2017.
  */
 public interface CityRepository extends CrudRepository<City, Integer> {
+
+    City findByName(String name);
+
 }

@@ -1,12 +1,8 @@
 package com.bootcamp.java.Domain;
 
 import com.bootcamp.java.Builder.CityBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.*;
-import java.sql.ResultSet;
 
 /**
  * Created by facun on 16/01/2017.
@@ -16,12 +12,11 @@ import java.sql.ResultSet;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_city;
+    private int idCity;
     private String name;
     @ManyToOne
     @JoinColumn(name = "id_state")
     private State state;
-
     public City(){}
     public City(String name, State state) {
         this.name = name;
@@ -30,15 +25,16 @@ public class City {
 
     public City(CityBuilder builder)
     {
+        this.idCity = builder.id_city;
         this.name = builder.name;
         this.state = builder.state;
     }
-    public int getId_city() {
-        return id_city;
+    public int getIdCity() {
+        return idCity;
     }
 
-    public void setId_city(int id_city) {
-        this.id_city = id_city;
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
     }
 
     public String getName() {
@@ -60,7 +56,7 @@ public class City {
     @Override
     public String toString() {
         return "City{" +
-                "id_city=" + id_city +
+                "idCity=" + idCity +
                 ", name='" + name + '\'' +
                 ", state=" + state +
                 '}';

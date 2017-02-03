@@ -15,12 +15,19 @@ import javax.persistence.ManyToOne;
 public class CityBuilder {
     @Id
     @GeneratedValue
-    private int id_city;
+    public int id_city;
     public String name;
     @ManyToOne
     @JoinColumn(name = "id_state")
     public State state;
 
+    public int getId_city() {
+        return id_city;
+    }
+
+    public void setId_city(int id_city) {
+        this.id_city = id_city;
+    }
 
     public CityBuilder name(String name)
     {
