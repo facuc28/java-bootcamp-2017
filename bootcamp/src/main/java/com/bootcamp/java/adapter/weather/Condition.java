@@ -12,11 +12,6 @@ public class Condition {
     private String date;
     private int temp;
     private String text;
-    @JsonProperty("forecast")
-    private Forecast[] forecast;
-    String description;
-    @JsonIgnore
-    private Guid guid;
 
     public Condition(){}
 
@@ -52,27 +47,4 @@ public class Condition {
         this.text = text;
     }
 
-    public Forecast[] getForecast() {
-        return forecast;
-    }
-
-    public void setForecast(Forecast[] forecast) {
-        this.forecast = forecast;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Guid getGuid() {
-        return guid;
-    }
-
-    public void setGuid(Guid guid) {
-        this.guid = guid;
-    }
 }

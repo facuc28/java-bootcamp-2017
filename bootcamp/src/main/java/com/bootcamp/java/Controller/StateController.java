@@ -35,7 +35,7 @@ public class StateController {
     @RequestMapping(value = "/state/{country}", method = RequestMethod.GET, headers = "Accept=application/json")
     public ResponseEntity<List<State>> getStates(@PathVariable String country)
     {
-        if (proxy.getStates(country)==null)
+        if (proxy.getStates(country).size()<1)
         {
             List<State> listOfStates = new ArrayList<>();
             stateRepository.findAll().forEach(listOfStates::add);

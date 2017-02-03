@@ -1,6 +1,7 @@
 package com.bootcamp.java.service;
 
 import com.bootcamp.java.adapter.weather.Query;
+import com.bootcamp.java.adapter.weather.RestResponseWeather;
 
 import javax.ws.rs.*;
 
@@ -13,8 +14,8 @@ public interface WeatherWService {
     //Auxiliaries
 
     @GET
-    @Path("")
+    @Path("/v1/public/yql")
     @Produces("application/json")
-    Query getWeather(@PathParam("state")String state,@PathParam("city") String city);
+    RestResponseWeather getWeather(@QueryParam("q")String q, @QueryParam("format")String format, @QueryParam("env") String env);
 
 }

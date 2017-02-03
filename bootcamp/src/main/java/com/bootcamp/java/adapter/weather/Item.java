@@ -1,5 +1,6 @@
 package com.bootcamp.java.adapter.weather;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -12,10 +13,14 @@ public class Item {
     @JsonProperty("long")
     private float longitud;
     private String link;
-    private String pubdate;
+    private String pubDate;
     @JsonProperty("condition")
     private Condition condition;
-
+    @JsonProperty("forecast")
+    private Forecast[] forecast;
+    private String description;
+    @JsonIgnore
+    private Guid guid;
     public Item(){}
 
     public String getTitle() {
@@ -50,12 +55,35 @@ public class Item {
         this.link = link;
     }
 
-    public String getPubdate() {
-        return pubdate;
+    public String getPubDate() {
+        return pubDate;
+    }
+    public Forecast[] getForecast() {
+        return forecast;
     }
 
-    public void setPubdate(String pubdate) {
-        this.pubdate = pubdate;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setForecast(Forecast[] forecast) {
+        this.forecast = forecast;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public Guid getGuid() {
+        return guid;
+    }
+
+    public void setGuid(Guid guid) {
+        this.guid = guid;
     }
 
     public Condition getCondition() {

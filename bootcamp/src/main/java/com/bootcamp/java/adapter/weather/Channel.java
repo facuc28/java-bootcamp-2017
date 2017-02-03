@@ -11,8 +11,8 @@ public class Channel {
     private String title;
     private String link;
     private String description;
-    private String lenguage;
-    private String lastBuild;
+    private String language;
+    private String lastBuildDate;
     private String ttl;
     @JsonIgnore
     private Unit units;
@@ -20,7 +20,7 @@ public class Channel {
     private Location location;
     private Wind wind;
     private Atmosphere atmosphere;
-    @JsonProperty
+    @JsonIgnore
     private Astronomy astronomy;
     @JsonIgnore
     private Image image;
@@ -51,20 +51,20 @@ public class Channel {
         this.description = description;
     }
 
-    public String getLenguage() {
-        return lenguage;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setLenguage(String lenguage) {
-        this.lenguage = lenguage;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public String getLastBuild() {
-        return lastBuild;
+    public String getLastBuildDate() {
+        return lastBuildDate;
     }
 
-    public void setLastBuild(String lastBuild) {
-        this.lastBuild = lastBuild;
+    public void setLastBuildDate(String lastBuildDate) {
+        this.lastBuildDate = lastBuildDate;
     }
 
     public String getTtl() {

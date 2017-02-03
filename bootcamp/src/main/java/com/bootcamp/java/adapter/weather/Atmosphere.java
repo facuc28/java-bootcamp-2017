@@ -8,7 +8,7 @@ public class Atmosphere {
     private int humidity;
     private double pressure;
     private int rising;
-    private int visibility;
+    private double visibility;
 
     public Atmosphere(){}
 
@@ -36,11 +36,11 @@ public class Atmosphere {
         this.rising = rising;
     }
 
-    public int getVisibility() {
+    public double getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(int visibility) {
+    public void setVisibility(double visibility) {
         this.visibility = visibility;
     }
 }

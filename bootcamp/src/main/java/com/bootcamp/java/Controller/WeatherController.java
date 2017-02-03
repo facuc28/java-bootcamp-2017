@@ -27,7 +27,7 @@ public class WeatherController {
     StateRepository stateRepository;
 
 
-    @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
+    @RequestMapping(value = "/weather/db/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
     public ResponseEntity<WeatherDetail> getWeatherForCity(@PathVariable String state, @PathVariable String city)
     {
         return new ResponseEntity<WeatherDetail>(proxy.getWeatherForCity(state,city), HttpStatus.FOUND);
@@ -38,7 +38,7 @@ public class WeatherController {
      weatherRepository.save(weather);
         return new ResponseEntity<String>("Weather added succesfully ",HttpStatus.CREATED);
     }
-    @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET)
+    @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET, headers="Accept=application/json")
     public  ResponseEntity<WeatherDetail> getWeather(@PathVariable String state, @PathVariable String city)
     {
         return new ResponseEntity<WeatherDetail>(proxy.getWeather(state,city),HttpStatus.FOUND);

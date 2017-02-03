@@ -61,10 +61,6 @@ public class Proxy {
     public List<State> getStates(String country){
         List<State> listOfStates = new ArrayList<>();
         RestResponseState restResponse = countryWService.getStates(country);
-        if (restResponse==null)
-            return null;
-        else
-        {
             State state;
             for (StateJson SJ: restResponse.getAdapterState().getResult())
             {
@@ -76,21 +72,22 @@ public class Proxy {
                         .capital(SJ.getCapital())
                         .build();
                 listOfStates.add(state);
-            }
 
-
-            return listOfStates;
         }
-
+        return listOfStates;
     }
     public WeatherDetail getWeather(String state, String city)
     {
         //Adapters objects
-        Query query = weatherWService.getWeather(state,city);
+        String q="select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)";
+        String format="json";
+        String env="store://datatables.org/alltableswithkeys";
+        RestResponseWeather restResponseWeather = weatherWService.getWeather(q,format,env);
+        Query query = restResponseWeather.getQuery();
         Channel channel= query.getResults().getChannel();
         Wind windAdapter = channel.getWind();
         Atmosphere atmosphereAdapter = channel.getAtmosphere();
-        Forecast[] forecastsAdapter = channel.getItem().getCondition().getForecast();
+        Forecast[] forecastsAdapter = channel.getItem().getForecast();
         Condition condition = channel.getItem().getCondition();
         //Domain objects
         String description = channel.getDescription();
@@ -102,11 +99,11 @@ public class Proxy {
                 .humidity(atmosphereAdapter.getHumidity())
                 .pressure(atmosphereAdapter.getPressure())
                 .rising(atmosphereAdapter.getRising())
-                .visibility(atmosphereAdapter.getVisibility())
+                .visibility((int)atmosphereAdapter.getVisibility())
                 .Build();
         Actual_weather actual_weather = new Actual_WeatherBuilder()
                 .date(condition.getDate())
-                .description(condition.getDescription())
+                .description(channel.getDescription())
                 .temperature(condition.getTemp())
                 .Build();
         Extended_weather extended_weather;
