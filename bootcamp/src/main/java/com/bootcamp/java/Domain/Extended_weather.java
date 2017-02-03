@@ -1,12 +1,8 @@
 package com.bootcamp.java.Domain;
 
-import java.sql.ResultSet;
+
 
 import com.bootcamp.java.Builder.Extended_WeatherBuilder;
-import com.bootcamp.java.Configuration.DataBase;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import javax.persistence.*;
 
 

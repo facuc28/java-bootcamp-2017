@@ -86,7 +86,7 @@ public class Proxy {
     public WeatherDetail getWeather(String state, String city)
     {
         //Adapters objects
-        Query query = weatherWService.getWeather("ak","nome");
+        Query query = weatherWService.getWeather(state,city);
         Channel channel= query.getResults().getChannel();
         Wind windAdapter = channel.getWind();
         Atmosphere atmosphereAdapter = channel.getAtmosphere();

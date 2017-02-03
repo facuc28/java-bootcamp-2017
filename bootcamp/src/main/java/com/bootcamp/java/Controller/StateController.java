@@ -32,7 +32,7 @@ public class StateController {
         stateRepository.save(state);
         return new ResponseEntity<String>("State successfully added", HttpStatus.CREATED);
     }
-    @RequestMapping(value = "/state/{country}")
+    @RequestMapping(value = "/state/{country}", method = RequestMethod.GET, headers = "Accept=application/json")
     public ResponseEntity<List<State>> getStates(@PathVariable String country)
     {
         if (proxy.getStates(country)==null)
@@ -42,6 +42,10 @@ public class StateController {
             return new ResponseEntity<List<State>>(listOfStates,HttpStatus.FOUND);
         }
         return  new ResponseEntity<List<State>>(proxy.getStates(country), HttpStatus.FOUND);
+    }
+    @RequestMapping(value = "state/find/{name}" ,method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<State> getStateByName(@PathVariable String name){
+        return new ResponseEntity<State>(stateRepository.findByName(name), HttpStatus.FOUND);
     }
 
 

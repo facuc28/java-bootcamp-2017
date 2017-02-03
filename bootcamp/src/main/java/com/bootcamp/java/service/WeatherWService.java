@@ -15,6 +15,6 @@ public interface WeatherWService {
     @GET
     @Path("")
     @Produces("application/json")
-    Query getWeather(@DefaultValue("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"nome, ak\"")@QueryParam("q")String query,@DefaultValue("json") @QueryParam("format")String format, @DefaultValue("store://datatables.org/alltableswithkeys")@QueryParam("env")String env);
+    Query getWeather(@PathParam("state")String state,@PathParam("city") String city);
 
 }

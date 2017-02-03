@@ -27,13 +27,11 @@ public class WeatherController {
     StateRepository stateRepository;
 
 
-        @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
-
-        public ResponseEntity<WeatherDetail> getWeatherPearCity(@PathVariable String state, @PathVariable String city)
-        {
-
-            return new ResponseEntity<WeatherDetail>(proxy.getWeatherForCity(state, city), HttpStatus.FOUND);
-        }
+    @RequestMapping(value = "/weather/{state}/{city}", method = RequestMethod.GET,headers="Accept=application/json")
+    public ResponseEntity<WeatherDetail> getWeatherForCity(@PathVariable String state, @PathVariable String city)
+    {
+        return new ResponseEntity<WeatherDetail>(proxy.getWeatherForCity(state,city), HttpStatus.FOUND);
+    }
 
     @RequestMapping(value="/weather/add", method= RequestMethod.POST)
     public ResponseEntity<String> insertWeather(@RequestBody Weather weather){

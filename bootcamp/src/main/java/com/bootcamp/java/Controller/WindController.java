@@ -5,10 +5,7 @@ import com.bootcamp.java.repository.WindRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by facun on 27/01/2017.
@@ -18,10 +15,15 @@ public class WindController {
     @Autowired
     WindRepository windRepository;
 
-    @RequestMapping(value = "wind/add", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "wind/add", method = RequestMethod.POST)
     public ResponseEntity<String> insertWind(@RequestBody Wind wind)
     {
         windRepository.save(wind);
         return new ResponseEntity<String>("Wind added Succesfully", HttpStatus.CREATED);
+    }
+    @RequestMapping(value = "wind/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<Wind> getWindById(@PathVariable int id)
+    {
+        return new ResponseEntity<Wind>(windRepository.findOne(id),HttpStatus.FOUND);
     }
 }
